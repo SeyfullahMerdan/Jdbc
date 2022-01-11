@@ -14,7 +14,6 @@ public class Jdbc1Query02 {
 		
 		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sys?serverTimezone=UTC", "root", "1234");
 		
-		
         Statement st= con.createStatement();
         
         
@@ -31,7 +30,6 @@ public class Jdbc1Query02 {
         System.out.println("================================================================");
         
         
-       
         
         
 
@@ -59,15 +57,15 @@ public class Jdbc1Query02 {
 		========================================================================*/ 
 	
         ResultSet tablo3= st.executeQuery( "select b.bolum_isim, p.isim, p.maas from bolumler b left join personel p"
-    	        + " on p.bolum_id=b.bolum_id "
-    	        + " Order by b.bolum_isim, p.maas");                    
+    	        + " on p.bolum_id=b.bolum_id "     // bölüm isimlerinin hepsini istedigi için join deyip left dedim
+    	        + " Order by b.bolum_isim, p.maas");// demezsem personel olmayan bölümler gelmez.                    
         
         while (tablo3.next()) {
 
         	System.out.println( tablo3.getString(1) + "    \t" + tablo3.getString(2) + "     \t" + tablo3.getInt(3) );
         	
 		}
-        
+      
         
         System.out.println("================================================================");
 
@@ -78,7 +76,7 @@ public class Jdbc1Query02 {
         
         ResultSet tablo4= st.executeQuery ( "select b.bolum_isim, p.isim, p.maas from personel p left join bolumler b "
 		 		+ "  on p.bolum_id=b.bolum_id"
-		 		+ " ORDER BY maas DESC"
+		 		+ " ORDER BY maas DESC" // büyükten küçüge sıralıyorum sonra limitle en yüksek 10 kişiyi almış oluyorum
 		 		+ " limit 10");
        
         

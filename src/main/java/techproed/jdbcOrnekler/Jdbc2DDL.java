@@ -123,8 +123,8 @@ public class Jdbc2DDL {
         
         
         
-        
-        
+        st.close();
+        con.close();
         
       
       
