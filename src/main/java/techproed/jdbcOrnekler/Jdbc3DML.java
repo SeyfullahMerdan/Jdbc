@@ -23,8 +23,7 @@ public class Jdbc3DML {
 		========================================================================*/
 	    
 	    
-	//    int s=st.executeUpdate ("INSERT INTO bolumler VALUES(91, 'ARGE2','CORLU')") ;
-	    
+	  //   int s=st.executeUpdate ("INSERT INTO bolumler VALUES(91, 'ARGE2','CORLU')") ;
 	  //  System.out.println(s + " satır eklendi...");
 	    
 
@@ -40,23 +39,19 @@ public class Jdbc3DML {
 	 	// yavas yapilmasina yol acar. 10000 tane veri kaydi yapildigi dusunuldugunde
 	    // bu kotu bir yaklasimdir.
 	    
-	/*    String[] sorgular = {
+	/*    String[] sorgular = {             // ==== >>>>  TOPLU VERİ GİRİŞİNDE ARRAY KULLANACAM. VE FOREACH İLE ARRAYİN İÇİNDE DÖNEREK EKLEYECEM
 	    		"INSERT INTO bolumler VALUES(95, 'YEMEKHANE', 'ISTANBUL')",
 	       	    "INSERT INTO bolumler VALUES(85, 'OFIS','ANKARA')",
 	       	    "INSERT INTO bolumler VALUES(75, 'OFIS2', 'VAN')"
 	    };
 	    
 	    int count=0;
-	    for (String e : sorgular) {
-		    
+	    for (String e : sorgular) { 
 	    	st.executeUpdate(e);
-	    	count++;
-	    	
+	    	count++;	
 		}
 	    
-	    
 	    System.out.println( count + " tane verinin girişi yapıldı.");
-	    
 	    */
 	    
 	 // 2.YONTEM (addBath ve excuteBatch() metotlari ile)
@@ -72,11 +67,8 @@ public class Jdbc3DML {
 	    
 	    
 	    for (String e : sorgular1) {
-		     
-	    	st.addBatch(e);// for döngüsü ile arrayden birbir gelen verileri bir araya toplar.
-	    	
+	    	st.addBatch(e);// for döngüsü ile arrayden birbir gelen verileri bir araya toplar.	
 		}
-	    
 	    st.executeBatch(); // verileri tek seferde database'e yollar.
 	    
 	    
@@ -84,11 +76,7 @@ public class Jdbc3DML {
 	 // 3. YONTEM
 	 	//-----------------------------------------------------
 	 	// batch metoduyla birlikte PreparedStatement kullanmak en efektif yontemdir.
-	 	// bir sonraki ornekte bunu gerceklestirecegiz.
-	 	
-	 	
-	    
-		
+	 	// bir sonraki ornekte bunu gerceklestirecegiz. CRUD bölümünde
+	 
 	}
-	
 }

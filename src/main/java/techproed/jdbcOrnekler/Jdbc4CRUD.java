@@ -2,15 +2,11 @@ package techproed.jdbcOrnekler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Jdbc4CRUD {
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");  
