@@ -4,16 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class JdbcSelfworkPstatementSet {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");  
 		Connection contact=DriverManager.getConnection("jdbc:mysql://localhost:3306/sys?serverTimezone=UTC", "root", "1234");	
-	  //  Statement zone= contact.createStatement();
+	    Statement zone= contact.createStatement();
 		
 
 // ==================================================================================================================
@@ -39,7 +41,7 @@ public class JdbcSelfworkPstatementSet {
 // ==================================================================================================================
 		
 	
-		List <JdbcSelWorkPojo> girisler=new ArrayList <> ();
+	/*	List <JdbcSelWorkPojo> girisler=new ArrayList <> ();
 		
 		girisler.add( new JdbcSelWorkPojo("merve", "kuzu", 5000, 1));
 		girisler.add( new JdbcSelWorkPojo("hakan", "alyan", 10000,2 ));
@@ -62,21 +64,35 @@ public class JdbcSelfworkPstatementSet {
 		
           giris.executeBatch();
         
-          System.out.println("veriler eklendi");
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-		
-		
+          System.out.println("veriler eklendi");  
+        */
+     
+// ==================================================================================================================         
+          
+     /*     
+         zone.executeUpdate("UPDATE ogretmen SET maas= maas*1.1 where maas<8000");
+         System.out.println("8bin altınaki maaşlara yüzde 10 zam yapılldı...");
+          
+          */
+          
+// ==================================================================================================================         
+         
+     /*   zone.execute("ALTER TABLE ogretmen ADD gun VARCHAR(25) default haftaiçi" );
+          System.out.println("yeni default sutun eklendi....");
+          */
+// ==================================================================================================================         
+          
+          
+         zone.executeUpdate("UPDATE ogretmen SET nobetsira=(nobetsira+5) WHERE nobetsira>2");
+         System.out.println("nobetsiralar degiştirildi....");
+          
+          
+          
+          
+          zone.close();
+          contact.close();
+  
+          
 	}
 
 }
